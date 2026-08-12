@@ -62,3 +62,27 @@ You can load and run this extension locally for free across all major Chromium b
 ---
 
 ## 🧠 System Architecture & Data Flow
+[ Target URL ]
+│
+├──> (Layer 0) Smart Whitelist Check ──> [ SAFE: Bypass AI ]
+│
+├──> (Layer 1 & 2) PhishTank / OpenPhish ──> [ THREAT: Instant Block ]
+│
+└──> (Layer 3) URL Feature Extraction + Groq Llama 3.1 AI
+│
+├──> Scrub Raw Data from RAM
+└──> Return ZK-Proof Hash & Threat Verdict
+---
+
+## 💻 Tech Stack
+
+* **Extension Engine:** Vanilla JavaScript (ES6+), Manifest V3, Web Extension APIs
+* **UI/UX:** Custom CSS3 (Cyberpunk Glassmorphism), HTML5
+* **Backend API:** Python 3.11, Flask, SQLite3, `tldextract`, `requests`
+* **AI Model:** Groq API (`llama-3.1-8b-instant`) @ Temperature 0.0
+
+---
+
+<p align="center">
+  <b>PhishGuard ZK v2.0</b> — Designed & Built by <b>Naishal Nadiya</b> in collaboration with <b>Sruthika Ramawat</b>.
+</p>
