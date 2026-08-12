@@ -1,63 +1,64 @@
 # 🛡️ PhishGuard ZK: Browser Extension (v2.0)
-> **Real-Time, Zero-Knowledge AI Phishing Detection right in your browser.**
+> **Real-Time, Zero-Knowledge AI Phishing Detection Engine**
 
 ![Version](https://img.shields.io/badge/Version-2.0.0-00f5ff?style=for-the-badge&logo=rocket)
-![Architecture](https://img.shields.io/badge/Architecture-Zero--Trust-ff006e?style=for-the-badge)
-![AI Engine](https://img.shields.io/badge/AI-Groq_Llama_3.1-8338ec?style=for-the-badge)
+![License](https://img.shields.io/badge/License-Proprietary_/_All_Rights_Reserved-ff006e?style=for-the-badge)
+![Architecture](https://img.shields.io/badge/Architecture-Zero--Trust-8338ec?style=for-the-badge)
+![AI Engine](https://img.shields.io/badge/AI-Groq_Llama_3.1-06ffa5?style=for-the-badge)
 
-Welcome to the **PhishGuard ZK Browser Extension**! Originally built for the MLH Midnight Hackathon, this tool has been completely overhauled into a hyper-fast, privacy-preserving browser extension. It intercepts, analyzes, and neutralizes advanced phishing threats in milliseconds without ever storing your sensitive data.
+---
 
-## 🔥 Key Features
+## ⛔ Copyright & Proprietary License Notice
 
-* **🖱️ Right-Click Context Menu:** Found a suspicious link? Just right-click on it and select *"Scan link with PhishGuard ZK"*. The extension scans the threat in the background and delivers an instant native browser notification.
-* **⚡ 4-Layer Waterfall Architecture:** 
-  * **Layer 0 (Contextual Whitelist):** Hardcoded instant bypass for globally trusted sites (Google, GitHub) and verified developer profiles to ensure zero false positives and lightning-fast speeds.
-  * **Layer 1 & 2 (Threat Intel):** Real-time pre-filtering using global databases (PhishTank & OpenPhish) to block known threats before they even reach the AI.
-  * **Layer 3 (AI Zero-Day Hunter):** Powered by Groq's Llama 3.1 (Temperature 0.0), detecting zero-day obfuscation, typosquatting, IDN homographs, and credential inclusion tricks.
-* **🕵️‍♂️ Zero-Knowledge Privacy:** We don't want your data. Raw URLs are instantly scrubbed from RAM. Only a cryptographic SHA-256 hash is generated for verifiable, blind ledger logging.
-* **🎨 Cyberpunk UI:** A sleek, dark-themed, neon-glowing Glassmorphism interface featuring a dynamic threat-score meter and live terminal animations.
+**Created and Developed with immense effort and passion by Naishal Nadiya ([naishalcybersec](https://github.com/naishal988)).**
+
+> ⚠️ **STRICT POLICY ON CLONING & FORKING:**  
+> This project represents original research, custom architecture, and hours of hard work. **Unauthorized cloning, public forking, re-uploading, or redistributing this codebase for personal gain or commercial use without explicit permission is strictly prohibited.**  
+> *All rights reserved © 2026 Naishal Nadiya.*
+
+---
+
+## 💖 Special Acknowledgement & Dedication
+
+While I engineered this browser extension, this project wouldn't have its heart and soul without **Sruthika Ramawat**. 
+
+Sruthika has been an indispensable part of the overall PhishGuard ZK vision, driving the core frontend ecosystem and design language of our main platform. Beyond code, repositories, and technical architecture, she holds a deeply special place in my life—a bond that goes far beyond just ordinary friendship. This release is dedicated to our collaboration, shared late-night builds, and unshakeable partnership. ⚡✨
+
+---
+
+## 🔥 Core Features
+
+* **🖱️ Right-Click Context Menu:** Instantly scan any link on any webpage by right-clicking and selecting *"Scan link with PhishGuard ZK"*. Get native browser notifications instantly.
+* **⚡ 4-Layer Waterfall Threat Engine:**
+  * **Layer 0 (Smart Contextual Whitelist):** Instant bypass for globally verified platforms (Google, GitHub, Developer Portfolios) eliminating false positives.
+  * **Layer 1 & 2 (Global Threat Intel):** Pre-filters URLs against live PhishTank & OpenPhish feeds to neutralize known malicious URLs in milliseconds.
+  * **Layer 3 (Zero-Day AI Threat Hunter):** Groq-powered Llama 3.1 model running strict zero-trust prompts to detect Punycode attacks, IDN homographs, raw IP obfuscation, and credential inclusion tricks (`@` symbol).
+* **🕵️‍♂️ Zero-Knowledge Privacy:** Zero data retention. Raw target URLs are permanently scrubbed from memory after analysis; only cryptographic SHA-256 ZK-hashes hit the ledger.
+* **🎨 Cyberpunk V2 UI:** Glassmorphism mini-dashboard with glowing threat-level gauges, live status indicators, and sleek dark mode aesthetics.
 
 ---
 
 ## 🚀 Installation Guide (Developer Mode)
 
-You can run this extension for free on Chrome, Microsoft Edge, and Firefox. 
+You can load and run this extension locally for free across all major Chromium browsers and Firefox:
 
 ### 1️⃣ Google Chrome & Brave
-1. Download this repository as a `.zip` file and extract it to a folder.
+1. Download or download the official source package from this repository.
 2. Open Chrome and navigate to `chrome://extensions/`.
-3. Toggle **Developer mode** ON (top right corner).
-4. Click **Load unpacked** (top left) and select the extracted folder.
-5. Pin the 🛡️ icon to your toolbar and you're good to go!
+3. Enable **Developer mode** (toggle switch in the top right).
+4. Click **Load unpacked** (top left) and select the `PhishGuard-Extension` folder.
+5. Pin the 🛡️ icon to your extensions toolbar!
 
 ### 2️⃣ Microsoft Edge
-1. Download and extract the repository.
-2. Open Edge and navigate to `edge://extensions/`.
-3. Turn on **Developer mode** in the bottom left menu.
-4. Click **Load unpacked** and select the folder. 
+1. Navigate to `edge://extensions/`.
+2. Toggle **Developer mode** in the left sidebar menu.
+3. Click **Load unpacked** and select the extension directory.
 
 ### 3️⃣ Mozilla Firefox
-1. Open Firefox and navigate to `about:debugging#/runtime/this-firefox`.
-2. Click on **Load Temporary Add-on**.
-3. Select the `manifest.json` file from the extracted folder.
+1. Navigate to `about:debugging#/runtime/this-firefox`.
+2. Click **Load Temporary Add-on...**
+3. Select the `manifest.json` file inside the extension folder.
 
 ---
 
-## 🧠 How The Engine Works (Under The Hood)
-
-When you click **"Initiate Zero-Knowledge Scan"**, the extension securely beams the target URL to our Python/Flask backend. 
-
-The backend employs an advanced parser that uncovers hidden evasion tactics (like URL shortening, Punycode `xn--` translation, and Hex/Octal IP obfuscation) before feeding the structured context to the strict, hyper-paranoid Llama-3.1 engine. The result is calculated, the data is scrubbed, and the threat score is beamed back to your browser popup.
-
----
-
-## 💻 Tech Stack
-* **Extension Frontend:** HTML5, CSS3 (Cyberpunk V2 Theme), Vanilla JavaScript.
-* **Backend API:** Python, Flask, SQLite.
-* **AI Engine:** Groq API (Llama-3.1-8b-instant).
-* **Blockchain / Ledger:** Midnight Compact Architecture (Concept).
-
----
-<p align="center">
-  <i>Built with ⚡ for a safer, private web by <b>Naishal (naishalcybersec)</b> & <b>Sruthika</b>.</i>
-</p>
+## 🧠 System Architecture & Data Flow
