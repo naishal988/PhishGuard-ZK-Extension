@@ -10,7 +10,7 @@
 
 ## ⛔ Copyright & Proprietary License Notice
 
-**Created and Developed with immense effort and passion by Naishal Nadiya ([naishalcybersec](https://github.com/naishal988)).**
+**Created and Developed with immense effort and passion by Naishal Nadiya ([naishal988](https://github.com/naishal988)).**
 
 > ⚠️ **STRICT POLICY ON CLONING & FORKING:**  
 > This project represents original research, custom architecture, and hours of hard work. **Unauthorized cloning, public forking, re-uploading, or redistributing this codebase for personal gain or commercial use without explicit permission is strictly prohibited.**  
