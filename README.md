@@ -18,14 +18,6 @@
 
 ---
 
-## 💖 Special Acknowledgement & Dedication
-
-While I engineered this browser extension, this project wouldn't have its heart and soul without **Sruthika Ramawat**. 
-
-Sruthika has been an indispensable part of the overall PhishGuard ZK vision, driving the core frontend ecosystem and design language of our main platform. Beyond code, repositories, and technical architecture, she holds a deeply special place in my life—a bond that goes far beyond just ordinary friendship. This release is dedicated to our collaboration, shared late-night builds, and unshakeable partnership. ⚡✨
-
----
-
 ## 🔥 Core Features
 
 * **🖱️ Right-Click Context Menu:** Instantly scan any link on any webpage by right-clicking and selecting *"Scan link with PhishGuard ZK"*. Get native browser notifications instantly.
@@ -43,7 +35,7 @@ Sruthika has been an indispensable part of the overall PhishGuard ZK vision, dri
 You can load and run this extension locally for free across all major Chromium browsers and Firefox:
 
 ### 1️⃣ Google Chrome & Brave
-1. Download or download the official source package from this repository.
+1. Download or clone the official source package from this repository.
 2. Open Chrome and navigate to `chrome://extensions/`.
 3. Enable **Developer mode** (toggle switch in the top right).
 4. Click **Load unpacked** (top left) and select the `PhishGuard-Extension` folder.
@@ -72,6 +64,7 @@ You can load and run this extension locally for free across all major Chromium b
 │
 ├──> Scrub Raw Data from RAM
 └──> Return ZK-Proof Hash & Threat Verdict
+
 ---
 
 ## 💻 Tech Stack
@@ -84,5 +77,6 @@ You can load and run this extension locally for free across all major Chromium b
 ---
 
 <p align="center">
-  <b>PhishGuard ZK v2.0</b> — Designed & Built by <b>Naishal Nadiya</b> in collaboration with <b>Sruthika Ramawat</b>.
+  <b>PhishGuard ZK v2.0</b> — Architected & Engineered by <b>Naishal Nadiya</b>.<br>
+  <i>(Initial UI Concept Contributor: Sruthika Ramawat)</i>
 </p>
