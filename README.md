@@ -78,5 +78,4 @@ You can load and run this extension locally for free across all major Chromium b
 
 <p align="center">
   <b>PhishGuard ZK v2.0</b> — Architected & Engineered by <b>Naishal Nadiya</b>.<br>
-  <i>(Initial UI Concept Contributor: Sruthika Ramawat)</i>
 </p>
