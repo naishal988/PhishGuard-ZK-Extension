@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "PhishGuard ZK v2",
+  "version": "2.0.0",
+  "description": "Zero-Knowledge Cyberpunk Phishing Detector by Naishal & Sruthika.",
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Scan with PhishGuard ZK"
+  },
+  "permissions": [
+    "activeTab",
+    "contextMenus",
+    "notifications"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "phishguardzk@naishal.sruthika",
+      "strict_min_version": "109.0"
+    }
+  },
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  }
+}

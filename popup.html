@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --bg: #000000;
+            --bg-card: rgba(20, 20, 20, 0.8);
+            --border: rgba(255, 255, 255, 0.1);
+            --text-main: #ffffff;
+            --text-muted: #a1a1aa;
+            --green: #10b981;
+            --red: #ef4444;
+        }
+        
+        body {
+            width: 380px;
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text-main);
+            padding: 24px;
+            position: relative;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .bg-noise {
+            position: fixed; inset: 0; z-index: -1; opacity: 0.04; pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        .header {
+            display: flex; align-items: center; justify-content: space-between;
+            border-bottom: 1px solid var(--border); padding-bottom: 16px; margin-bottom: 24px;
+        }
+
+        .logo-wrap { display: flex; align-items: center; gap: 12px; }
+        .logo-icon { 
+            width: 32px; height: 32px; background: #fff; color: #000; 
+            border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1rem;
+        }
+
+        .brand-name { font-weight: 700; font-size: 1.1rem; letter-spacing: -0.5px; line-height: 1.2;}
+        .sub-brand { font-size: 0.65rem; color: var(--text-muted); margin-top: 2px; }
+        .badge { font-size: 0.65rem; padding: 2px 6px; background: rgba(255,255,255,0.1); border: 1px solid var(--border); border-radius: 4px; color: var(--text-muted); font-weight: 600; }
+        
+        .input-label { font-size: 0.75rem; color: var(--text-muted); font-weight: 500; margin-bottom: 8px; display: block; }
+        
+        .input-box {
+            width: 100%; padding: 14px; background: rgba(0,0,0,0.5); border: 1px solid var(--border);
+            border-radius: 12px; color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;
+            transition: all 0.3s ease; box-sizing: border-box; margin-bottom: 20px;
+        }
+        
+        .input-box:focus { outline: none; border-color: rgba(255,255,255,0.4); box-shadow: 0 0 15px rgba(255,255,255,0.05); }
+        
+        .btn {
+            width: 100%; padding: 14px; background: #fff; border: none; border-radius: 12px;
+            color: #000; font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: all 0.2s ease;
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+        }
+        
+        .btn:hover:not(:disabled) { background: #e4e4e7; transform: scale(0.98); }
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        .loader-container { display: none; text-align: center; margin: 24px 0; }
+        .spinner { width: 24px; height: 24px; border: 2px solid rgba(255,255,255,0.1); border-top-color: #fff; border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 12px; }
+        
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        #result-box { display: none; margin-top: 24px; padding: 20px; border-radius: 12px; background: var(--bg-card); border: 1px solid var(--border); animation: slideUp 0.4s ease; }
+        
+        @keyframes slideUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .safe { border-color: rgba(16, 185, 129, 0.4) !important; background: rgba(16, 185, 129, 0.05) !important; }
+        .danger { border-color: rgba(239, 68, 68, 0.4) !important; background: rgba(239, 68, 68, 0.05) !important; }
+
+        .result-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+        .res-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+        
+        .safe .res-icon { background: rgba(16, 185, 129, 0.1); color: var(--green); }
+        .danger .res-icon { background: rgba(239, 68, 68, 0.1); color: var(--red); }
+        
+        .threat-title { font-weight: 600; font-size: 1.05rem; letter-spacing: -0.5px; }
+        .reason { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 16px; }
+        
+        .zk-badge { display: flex; justify-content: space-between; align-items: center; padding: 10px; background: #000; border: 1px solid var(--border); border-radius: 8px; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+    <div class="bg-noise"></div>
+    <div class="header">
+        <div class="logo-wrap">
+            <div class="logo-icon"><i class="fas fa-shield-halved"></i></div>
+            <div>
+                <div class="brand-name">PhishGuard ZK</div>
+                <div class="sub-brand">Lead: Naishal | Concept: Sruthika</div>
+            </div>
+        </div>
+        <span class="badge">PRO</span>
+    </div>
+    
+    <label class="input-label">TARGET URL</label>
+    <input type="url" id="url-input" class="input-box" placeholder="Extracting current tab URL..." autocomplete="off">
+    
+    <button id="scan-btn" class="btn">
+        <i class="fas fa-bolt"></i> Initialize ZK Scan
+    </button>
+    
+    <div id="loader" class="loader-container">
+        <div class="spinner"></div>
+        <div style="color: var(--text-muted); font-size: 0.8rem; font-family: 'JetBrains Mono', monospace;">Executing Zero-Trust Logic...</div>
+    </div>
+    
+    <div id="result-box">
+        <div class="result-header">
+            <div id="res-icon" class="res-icon"></div>
+            <div id="res-title" class="threat-title"></div>
+        </div>
+        <div id="res-reason" class="reason"></div>
+        <div class="zk-badge">
+            <span id="res-hash" style="color:#fff">0x...</span>
+            <i class="fas fa-lock" style="color:var(--text-muted)"></i>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
